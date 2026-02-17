@@ -1,0 +1,21 @@
+ALTER TABLE entertainer_web.ent_customer_devices
+RENAME TO entertainer_web.ent_customer_devices_old;
+
+CREATE TABLE IF NOT EXISTS entertainer_web.`ent_customer_devices` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `device_install_token` varchar(23) DEFAULT NULL,
+  `device_model` varchar(255) DEFAULT NULL,
+  `device_os` varchar(255) DEFAULT NULL,
+  `device_first_used` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `customer_id` int DEFAULT NULL,
+  `session_id` int DEFAULT NULL,
+  `primary_device` tinyint(1) DEFAULT '0',
+  `device_id` varchar(100) DEFAULT NULL,
+  `amz_update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_black_listed` tinyint(1) DEFAULT '0',
+  `firebase_device_token` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `session_id` (`session_id`),
+  KEY `customer_id` (`customer_id`),
+  KEY `ent_customer_devices_device_id` (`device_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38011287 DEFAULT CHARSET=utf8mb3;
